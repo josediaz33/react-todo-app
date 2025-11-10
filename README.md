@@ -1,6 +1,8 @@
 Parte 1: Realizar dos mejoras
 1. Persistencia de datos con LocalStorage
 La primera mejora fue persistir las tareas en local storage, con nuestra variable de getInitialTask, obtenemos el estado inicial del local, y luego inicializamos con useState y se comprueba si existen tareas o no, si hay se carga o sino inicializa vacio, luego con useEffect se escucha cualquier cambio en el arreglo de tareas, con el JSON.stringify se guarda cualquier cambio que haya.
+
+```
 // Función para obtener el estado inicial desde localStorage
 const getInitialTasks = (): Task[] => {
     const storedTasks = localStorage.getItem('react-ts-todo-tasks');
@@ -12,9 +14,10 @@ const getInitialTasks = (): Task[] => {
 useEffect(() => {
         localStorage.setItem('react-ts-todo-tasks', JSON.stringify(tasks));
     }, [tasks]);
-2. Contador de tareas pendientes
+```
+3. Contador de tareas pendientes
 La otra mejora que considere más sencilla era calcular las tareas, con un contador en tiempo real. Simplemente utilizamos filter sobre el array de tareas, y contamos unicamente aquellas donde el valor de “done” sea false, esto se recalcula automáticamente en cada render.
-const pendingTasksCount = tasks.filter(task => !task.done).length;
+```const pendingTasksCount = tasks.filter(task => !task.done).length;```
 
 Parte 2: Integración Avanzada - Multi-Página
 Para la segunda parte elegí la opción de hacer multi-página nuestro todo app.
